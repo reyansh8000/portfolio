@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guru Prasad Yadav | DevOps Engineer Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dark">
+
+    <!-- Floating Navigation -->
+    <nav class="floating-nav">
+        <div class="brand-container">
+            <div class="logo-box">
+                <img src="images/logo.png" alt="Guru Prasad Logo">
+            </div>
+            <span class="brand-text">GURU</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="#about" class="nav-link active">About</a>
+            <a href="#technologies" class="nav-link">Skills</a>
+            <a href="#what-i-do" class="nav-link">Services</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+
+        <div class="nav-icons">
+            <button class="icon-btn" title="Shortcuts" aria-label="Keyboard shortcuts">
+                <i class="far fa-keyboard"></i>
+            </button>
+            <button class="icon-btn" title="Share" aria-label="Share profile">
+                <i class="fas fa-share-nodes"></i>
+            </button>
+            <button class="icon-btn theme-toggle" onclick="toggleTheme()" title="Toggle Theme" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <div class="main-grid">
+
+            <!-- Profile Column -->
+            <div class="profile-column">
+
+                <!-- Profile Card -->
+                <div class="profile-card fade-in-up gradient-border border-red">
+                    <div class="profile-wrapper">
+                        <div class="profile-frame">
+                            <img id="profile-pic" src="images/profile1.jpg" alt="Guru Prasad Yadav" class="profile-img">
+                        </div>
+                        <div class="online-dot"></div>
+                    </div>
+
+                    <h1 class="hero-name">
+                        <span id="typing-name"></span><span class="cursor">|</span>
+                    </h1>
+
+                    <div class="status-badge">
+                        <span class="pulse-dot"></span> Available for Work
+                    </div>
+
+                    <p class="bio-text">
+                        DevOps Engineer focused on automation, scalability, and cloud infrastructure. Based in India 🇮🇳
+                    </p>
+
+                    <div class="stats-row">
+                        <div class="stat-item">
+                            <h3 class="stat-number">4+</h3>
+                            <span>Years</span>
+                        </div>
+                        <div class="stat-item">
+                            <h3 class="stat-number">50+</h3>
+                            <span>Projects</span>
+                        </div>
+                        <div class="stat-item">
+                            <h3 class="stat-number">10+</h3>
+                            <span>Clients</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievements Card -->
+                <div class="achievements-card fade-in-up gradient-border border-gold" style="animation-delay: 0.2s;">
+                    <div class="card-title">
+                        <div class="icon-circle gold"><i class="fas fa-trophy"></i></div>
+                        <div>
+                            <h4>Achievements</h4>
+                            <span>Community Impact</span>
+                        </div>
+                    </div>
+
+                    <div class="achievement-list">
+                        <div class="achieve-item">
+                            <i class="fab fa-github"></i>
+                            <div>
+                                <h5>2.5K+ followers</h5>
+                                <span>GitHub Community</span>
+                            </div>
+                        </div>
+                        <div class="achieve-item">
+                            <i class="fab fa-linkedin"></i>
+                            <div>
+                                <h5>3K+ followers</h5>
+                                <span>LinkedIn Network</span>
+                            </div>
+                        </div>
+                        <div class="achieve-item">
+                            <i class="fas fa-newspaper"></i>
+                            <div>
+                                <h5>13K+ followers</h5>
+                                <span>Dev.to Community</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Column -->
+            <div class="content-column">
+
+                <!-- About Section -->
+                <section id="about" class="content-box fade-in-up gradient-border border-blue" style="animation-delay: 0.3s;">
+                    <div class="box-header">
+                        <div class="icon-circle blue"><i class="fas fa-globe"></i></div>
+                        <div>
+                            <h4>About Me</h4>
+                            <span>Professional Overview</span>
+                        </div>
+                    </div>
+                    <p>
+                        I'm a passionate DevOps Engineer on a mission to automate everything and build highly scalable
+                        cloud infrastructures. With a strong focus on cloud computing, automation, and DevOps best practices,
+                        I specialize in streamlining deployments, optimizing workflows, and maintaining high-performance
+                        infrastructure. I work on real-time DevOps and cloud projects involving AWS, Azure, Terraform,
+                        Kubernetes, and Docker.
+                    </p>
+                </section>
+
+                <!-- Technologies Section -->
+                <section id="technologies" class="content-box fade-in-up gradient-border border-purple" style="animation-delay: 0.4s;">
+                    <div class="box-header">
+                        <div class="icon-circle purple"><i class="fab fa-docker"></i></div>
+                        <div>
+                            <h4>Core Technologies</h4>
+                            <span>Technical Expertise</span>
+                        </div>
+                    </div>
+
+                    <div class="tech-container">
+                        <span class="tech-badge">AWS</span>
+                        <span class="tech-badge">Azure</span>
+                        <span class="tech-badge">Terraform</span>
+                        <span class="tech-badge">Kubernetes</span>
+                        <span class="tech-badge">Docker</span>
+                        <span class="tech-badge">DevOps</span>
+                        <span class="tech-badge">Cloud Infrastructure</span>
+                        <span class="tech-badge">CI/CD</span>
+                        <span class="tech-badge">Ansible</span>
+                        <span class="tech-badge">Python</span>
+                    </div>
+                </section>
+
+                <!-- Services Section -->
+                <section id="what-i-do" class="content-box fade-in-up gradient-border border-orange" style="animation-delay: 0.5s;">
+                    <div class="box-header">
+                        <div class="icon-circle orange"><i class="fas fa-microchip"></i></div>
+                        <div>
+                            <h4>What I Do</h4>
+                            <span>Services & Expertise</span>
+                        </div>
+                    </div>
+
+                    <div class="services-list">
+                        <div class="service-item">
+                            <h5><i class="fas fa-cloud"></i> Cloud & DevOps Specialist</h5>
+                            <ul>
+                                <li>Architecting scalable infrastructures</li>
+                                <li>AWS, Azure, Kubernetes expert</li>
+                            </ul>
+                        </div>
+                        <div class="service-item">
+                            <h5><i class="fas fa-robot"></i> Automation Enthusiast</h5>
+                            <ul>
+                                <li>CI/CD pipelines</li>
+                                <li>Infrastructure as Code (IaC)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Projects Section -->
+                <section id="projects" class="content-box fade-in-up gradient-border border-green" style="animation-delay: 0.6s;">
+                    <div class="box-header">
+                        <div class="icon-circle green"><i class="fas fa-code"></i></div>
+                        <div>
+                            <h4>Projects</h4>
+                            <span>Recent Work</span>
+                        </div>
+                    </div>
+                    <div class="projects-grid">
+                        <div class="project-mini">
+                            <i class="far fa-folder-open"></i>
+                            <span>TGS Admin</span>
+                        </div>
+                        <div class="project-mini">
+                            <i class="fas fa-server"></i>
+                            <span>Home Lab</span>
+                        </div>
+                        <div class="project-mini">
+                            <i class="fas fa-network-wired"></i>
+                            <span>RMM Tool</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact Section -->
+                <section id="contact" class="content-box fade-in-up gradient-border border-cyan" style="animation-delay: 0.7s;">
+                    <div class="box-header">
+                        <div class="icon-circle cyan"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <h4>Get In Touch</h4>
+                            <span>Let's Connect</span>
+                        </div>
+                    </div>
+                    <div class="contact-links">
+                        <a href="mailto:guru@example.com" class="contact-link">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email Me</span>
+                        </a>
+                        <a href="https://github.com/guruprasad" class="contact-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://linkedin.com/in/guruprasad" class="contact-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
