@@ -1,394 +1,202 @@
-// =============================================
-// CONFIGURATION
-// =============================================
-const CONFIG = {
-    typeSpeed: 100,
-    pauseAfterType: 5000,
-    imageInterval: 5000,
-    scrollThreshold: 300,
-    textToType: "Guru Prasad Yadav",
-    profiles: [
-        "profile1.jpg",
-        "profile2.jpg",
-        "profile3.jpg",
-        "profile4.jpg"
-    ]
-};
-
-// =============================================
-// INITIALIZATION
-// =============================================
 document.addEventListener('DOMContentLoaded', () => {
-    initializeApp();
-});
-
-function initializeApp() {
-    // Initialize typing effect
-    typeEffect();
-    
-    // Start profile image rotation
-    setInterval(autoChangeProfile, CONFIG.imageInterval);
-    
-    // Initialize theme
-    initializeTheme();
-    
-    // Initialize scroll features
-    initializeScrollFeatures();
-    
-    // Initialize navigation
-    initializeNavigation();
-    
-    // Animate stats on scroll
-    animateStatsOnScroll();
-    
-    // Add intersection observer for animations
-    initializeIntersectionObserver();
-}
-
-// =============================================
-// TYPING EFFECT
-// =============================================
-function typeEffect() {
-    const typingElement = document.getElementById("typing-name");
-    if (!typingElement) return;
-    
-    let charIndex = 0;
-    typingElement.innerHTML = "";
-    
-    function type() {
-        if (charIndex < CONFIG.textToType.length) {
-            typingElement.innerHTML += CONFIG.textToType.charAt(charIndex);
-            charIndex++;
-            setTimeout(type, CONFIG.typeSpeed);
-        } else {
-            setTimeout(() => {
-                charIndex = 0;
-                typeEffect();
-            }, CONFIG.pauseAfterType);
+    // 1. Initialize Icons
+    lucide.createIcons({
+        attrs: {
+            'stroke-width': 1.5
         }
-    }
-    
-    type();
-}
+    });
 
-// =============================================
-// PROFILE IMAGE ROTATION
-// =============================================
-function autoChangeProfile() {
-    const profileElement = document.getElementById("profile-pic");
-    if (!profileElement) return;
-    
-    const currentSrc = profileElement.getAttribute('src').split('/').pop();
-    let randomIndex = Math.floor(Math.random() * CONFIG.profiles.length);
-    
-    // Ensure we don't get the same image
-    while (CONFIG.profiles[randomIndex] === currentSrc) {
-        randomIndex = Math.floor(Math.random() * CONFIG.profiles.length);
+    // 2. Theme Toggle
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+            const isDark = htmlElement.classList.contains('dark');
+            localStorage.theme = isDark ? 'dark' : 'light';
+            htmlElement.style.colorScheme = isDark ? 'dark' : 'light';
+        });
     }
-    
-    // Fade out
-    profileElement.style.opacity = '0';
-    
-    // Change image and fade in
+
+    // 3. Header Animation
+    const header = document.getElementById('main-header');
     setTimeout(() => {
-        profileElement.src = "images/" + CONFIG.profiles[randomIndex];
-        profileElement.style.opacity = '1';
-    }, 300);
-}
+        if (header) header.classList.remove('opacity-0', '-translate-y-full');
+    }, 100);
 
-// =============================================
-// THEME MANAGEMENT
-// =============================================
-function initializeTheme() {
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    document.body.className = savedTheme;
-    updateThemeIcon(savedTheme);
-}
-
-function toggleTheme() {
-    const body = document.body;
-    const currentTheme = body.classList.contains('dark') ? 'dark' : 'light';
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    body.className = newTheme;
-    localStorage.setItem('theme', newTheme);
-    updateThemeIcon(newTheme);
-}
-
-function updateThemeIcon(theme) {
-    const themeBtn = document.querySelector('.theme-toggle i');
-    if (themeBtn) {
-        themeBtn.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-    }
-}
-
-// =============================================
-// SCROLL FEATURES
-// =============================================
-function initializeScrollFeatures() {
-    const scrollBtn = document.getElementById('scrollToTop');
-    
-    // Show/hide scroll to top button
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > CONFIG.scrollThreshold) {
-            scrollBtn?.classList.add('visible');
-        } else {
-            scrollBtn?.classList.remove('visible');
-        }
-        
-        // Update active navigation link
-        updateActiveNavLink();
-    });
-    
-    // Scroll to top functionality
-    scrollBtn?.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-}
-
-// =============================================
-// NAVIGATION
-// =============================================
-function initializeNavigation() {
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            
-            const targetId = link.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
-            if (targetSection) {
-                const offsetTop = targetSection.offsetTop - 100;
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-                
-                // Update active state
-                navLinks.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-            }
-        });
-    });
-}
-
-function updateActiveNavLink() {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    let currentSection = '';
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 150;
-        const sectionHeight = section.clientHeight;
-        
-        if (window.pageYOffset >= sectionTop && 
-            window.pageYOffset < sectionTop + sectionHeight) {
-            currentSection = section.getAttribute('id');
-        }
-    });
-    
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${currentSection}`) {
-            link.classList.add('active');
-        }
-    });
-}
-
-// =============================================
-// STATS ANIMATION
-// =============================================
-function animateStatsOnScroll() {
-    const statNumbers = document.querySelectorAll('.stat-number');
-    let hasAnimated = false;
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !hasAnimated) {
-                statNumbers.forEach(stat => {
-                    animateValue(stat);
-                });
-                hasAnimated = true;
-            }
-        });
-    }, { threshold: 0.5 });
-    
-    const statsRow = document.querySelector('.stats-row');
-    if (statsRow) {
-        observer.observe(statsRow);
-    }
-}
-
-function animateValue(element) {
-    const text = element.textContent;
-    const number = parseInt(text);
-    const suffix = text.replace(/[0-9]/g, '');
-    const duration = 2000;
-    const steps = 60;
-    const increment = number / steps;
-    let current = 0;
-    
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= number) {
-            element.textContent = number + suffix;
-            clearInterval(timer);
-        } else {
-            element.textContent = Math.floor(current) + suffix;
-        }
-    }, duration / steps);
-}
-
-// =============================================
-// INTERSECTION OBSERVER FOR ANIMATIONS
-// =============================================
-function initializeIntersectionObserver() {
-    const animatedElements = document.querySelectorAll('.fade-in-up');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
-    
-    animatedElements.forEach(element => {
-        observer.observe(element);
-    });
-}
-
-// =============================================
-// UTILITY FUNCTIONS
-// =============================================
-
-// Debounce function for performance
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Add smooth hover effect to cards
-document.addEventListener('DOMContentLoaded', () => {
-    const cards = document.querySelectorAll('.content-box, .profile-card, .achievements-card');
-    
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', function(e) {
-            this.style.transition = 'all 0.3s ease';
-        });
-    });
-});
-
-// Handle keyboard shortcuts
-document.addEventListener('keydown', (e) => {
-    // Press 'T' to toggle theme
-    if (e.key === 't' || e.key === 'T') {
-        if (!e.target.matches('input, textarea')) {
-            toggleTheme();
-        }
-    }
-    
-    // Press 'Escape' to scroll to top
-    if (e.key === 'Escape') {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    }
-});
-
-// Add parallax effect to profile image
-window.addEventListener('scroll', debounce(() => {
-    const profileImg = document.querySelector('.profile-img');
-    if (profileImg && window.innerWidth > 1100) {
-        const scrolled = window.pageYOffset;
-        const rate = scrolled * 0.3;
-        profileImg.style.transform = `translateY(${rate}px) scale(1.05)`;
-    }
-}, 10));
-
-// Preload images for smooth transitions
-function preloadImages() {
-    CONFIG.profiles.forEach(filename => {
-        const img = new Image();
-        img.src = `images/${filename}`;
-    });
-}
-
-// Call preload on page load
-window.addEventListener('load', preloadImages);
-
-// Add easter egg - click logo 5 times for surprise
-let logoClickCount = 0;
-const logo = document.querySelector('.logo-box');
-
-logo?.addEventListener('click', () => {
-    logoClickCount++;
-    
-    if (logoClickCount === 5) {
-        // Create confetti effect or special message
-        createConfetti();
-        logoClickCount = 0;
-    }
-});
-
-function createConfetti() {
-    // Simple confetti animation
-    const colors = ['#ef4444', '#3b82f6', '#22c55e', '#eab308', '#a855f7'];
-    
-    for (let i = 0; i < 50; i++) {
+    // 4. Bento Stagger Animation
+    const cards = document.querySelectorAll('.bento-card');
+    cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
         setTimeout(() => {
-            const confetti = document.createElement('div');
-            confetti.style.cssText = `
-                position: fixed;
-                width: 10px;
-                height: 10px;
-                background: ${colors[Math.floor(Math.random() * colors.length)]};
-                top: -10px;
-                left: ${Math.random() * 100}%;
-                border-radius: 50%;
-                pointer-events: none;
-                z-index: 9999;
-                animation: fall ${2 + Math.random() * 2}s linear forwards;
-            `;
-            
-            document.body.appendChild(confetti);
-            
-            setTimeout(() => confetti.remove(), 4000);
-        }, i * 30);
-    }
-}
+            card.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+            // Clear inline styles after animation so CSS :hover can take over
+            setTimeout(() => {
+                card.style.removeProperty('opacity');
+                card.style.removeProperty('transform');
+                card.style.removeProperty('transition');
+            }, 700);
+        }, 300 + (index * 100));
+    });
 
-// Add CSS for confetti animation
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes fall {
-        to {
-            transform: translateY(100vh) rotate(360deg);
-            opacity: 0;
+    // 5. Mobile Menu
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const closeMenuBtn = document.getElementById('close-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    function toggleMenu() {
+        document.body.style.overflow = mobileMenu.classList.contains('translate-x-full') ? 'hidden' : '';
+        mobileMenu.classList.toggle('translate-x-full');
+    }
+
+    if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMenu);
+    if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMenu);
+    mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+    // 6. Scroll Progress
+    const scrollProgress = document.getElementById('scroll-progress');
+    window.addEventListener('scroll', () => {
+        if (!scrollProgress) return;
+        const total = document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        scrollProgress.style.transform = `scaleX(${total / height})`;
+    });
+
+    // 7. Scroll to Top
+    const scrollTopBtn = document.getElementById('scroll-to-top');
+    const footerScrollTopBtn = document.getElementById('footer-back-to-top');
+
+    if (scrollTopBtn) {
+        scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    }
+    if (footerScrollTopBtn) {
+        footerScrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    }
+
+    // 8. Profile Image Rotation
+    const profileImage = document.getElementById('profile-image');
+    if (profileImage) {
+        const images = ['images/profile1.jpg', 'images/profile2.jpg', 'images/profile3.jpg'];
+        let currentImageIndex = 0;
+
+        // Preload
+        images.forEach(src => new Image().src = src);
+
+        setInterval(() => {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            profileImage.style.opacity = '0';
+            setTimeout(() => {
+                profileImage.src = images[currentImageIndex];
+                profileImage.style.opacity = '1';
+            }, 500);
+        }, 5000);
+    }
+
+    // 9. Name Typing Animation (Loop constantly)
+    const typingNameElement = document.getElementById('typing-name');
+    const nameText = "Guru Prasad Yadav";
+
+    function typeNameEffect() {
+        if (!typingNameElement) return;
+
+        // Type out
+        let i = 0;
+        typingNameElement.textContent = "";
+
+        const typeInterval = setInterval(() => {
+            typingNameElement.textContent += nameText.charAt(i);
+            i++;
+            if (i > nameText.length - 1) {
+                clearInterval(typeInterval);
+
+                // Wait, then delete (or just restart loop)
+                // User asked for "Name animate type animation in 5sec"
+                setTimeout(() => {
+                    typeNameEffect();
+                }, 5000); // Wait 5 seconds after typing finishes, then restart
+            }
+        }, 100); // Typing speed
+    }
+
+    // Start typing effect
+    typeNameEffect();
+
+    // Scroll fade-in observer for bento cards
+    const fadeCards = document.querySelectorAll('.bento-card.scroll-fade-in');
+    if (fadeCards.length > 0) {
+        // If navigating with a hash (e.g. from contact.html to #about),
+        // instantly reveal all cards so the browser scrolls to the right spot
+        if (window.location.hash) {
+            fadeCards.forEach(card => card.classList.add('visible'));
+        } else {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            fadeCards.forEach((card, i) => {
+                card.style.transitionDelay = `${i * 0.15}s`;
+                observer.observe(card);
+            });
         }
     }
-`;
-document.head.appendChild(style);
 
-// Console message for developers
-console.log('%c👋 Hello Developer!', 'font-size: 20px; color: #3b82f6; font-weight: bold;');
-console.log('%cWelcome to Guru Prasad Yadav\'s Portfolio', 'font-size: 14px; color: #22c55e;');
-console.log('%cPress T to toggle theme | Press ESC to scroll to top', 'font-size: 12px; color: #a1a1aa;');
+    // --- Share Utility ---
+    const shareBtn = document.getElementById('share-btn');
+    const shareDropdown = document.getElementById('share-dropdown');
+    const copyLinkBtn = document.getElementById('copy-link-btn');
+    const copyFeedback = document.getElementById('copy-feedback');
+    const shareTwitter = document.getElementById('share-twitter');
+    const shareLinkedin = document.getElementById('share-linkedin');
+    const shareEmail = document.getElementById('share-email');
+
+    if (shareBtn && shareDropdown) {
+        // Toggle Dropdown
+        shareBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            shareDropdown.classList.toggle('active');
+        });
+
+        // Close on Outside Click
+        document.addEventListener('click', (e) => {
+            if (!shareDropdown.contains(e.target) && !shareBtn.contains(e.target)) {
+                shareDropdown.classList.remove('active');
+            }
+        });
+
+        // Update Share Links Dynamically
+        const currentUrl = encodeURIComponent(window.location.href);
+        const pageTitle = encodeURIComponent(document.title);
+
+        if (shareTwitter) shareTwitter.href = `https://twitter.com/intent/tweet?text=${pageTitle}&url=${currentUrl}`;
+        if (shareLinkedin) shareLinkedin.href = `https://www.linkedin.com/sharing/share-offsite/?url=${currentUrl}`;
+        if (shareEmail) shareEmail.href = `mailto:?subject=${pageTitle}&body=Check this out: ${currentUrl}`;
+
+        // Copy Link Functionality
+        if (copyLinkBtn) {
+            copyLinkBtn.addEventListener('click', () => {
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    // Show Feedback
+                    if (copyFeedback) {
+                        copyFeedback.classList.add('show');
+                        setTimeout(() => {
+                            copyFeedback.classList.remove('show');
+                        }, 2000);
+                    }
+                    // Close Dropdown
+                    shareDropdown.classList.remove('active');
+                });
+            });
+        }
+    }
+
+});

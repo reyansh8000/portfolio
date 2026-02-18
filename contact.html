@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Guru Prasad Yadav</title>
+    <meta name="description"
+        content="Get in touch with Guru Prasad Yadav - System Administrator & Sr. Hardware and Network Engineer.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        border: "hsl(var(--border))",
+                        input: "hsl(var(--input))",
+                        ring: "hsl(var(--ring))",
+                        background: "hsl(var(--background))",
+                        foreground: "hsl(var(--foreground))",
+                        primary: {
+                            DEFAULT: "hsl(var(--primary))",
+                            foreground: "hsl(var(--primary-foreground))",
+                        },
+                        secondary: {
+                            DEFAULT: "hsl(var(--secondary))",
+                            foreground: "hsl(var(--secondary-foreground))",
+                        },
+                        muted: {
+                            DEFAULT: "hsl(var(--muted))",
+                            foreground: "hsl(var(--muted-foreground))",
+                        },
+                        card: {
+                            DEFAULT: "hsl(var(--card))",
+                            foreground: "hsl(var(--card-foreground))",
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Space Grotesk', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --background: 0 0% 100%;
+            --foreground: 0 0% 3.9%;
+            --card: 0 0% 100%;
+            --card-foreground: 0 0% 3.9%;
+            --primary: 0 0% 9%;
+            --primary-foreground: 0 0% 98%;
+            --secondary: 0 0% 96.1%;
+            --secondary-foreground: 0 0% 9%;
+            --muted: 0 0% 96.1%;
+            --muted-foreground: 0 0% 45.1%;
+            --border: 0 0% 89.8%;
+            --input: 0 0% 89.8%;
+            --ring: 0 0% 3.9%;
+        }
+
+        .dark {
+            --background: 240 10% 3.9%;
+            --foreground: 0 0% 98%;
+            --card: 240 10% 5%;
+            --card-foreground: 0 0% 98%;
+            --primary: 0 0% 98%;
+            --primary-foreground: 240 5.9% 10%;
+            --secondary: 240 3.7% 15.9%;
+            --secondary-foreground: 0 0% 98%;
+            --muted: 240 3.7% 15.9%;
+            --muted-foreground: 240 5% 64.9%;
+            --border: 240 3.7% 15.9%;
+            --input: 240 3.7% 15.9%;
+            --ring: 240 4.9% 83.9%;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            letter-spacing: -0.011em;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: hsl(var(--primary));
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        .cursor-blink {
+            animation: blink 1s step-end infinite;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: hsl(var(--muted-foreground) / 0.3);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: hsl(var(--muted-foreground) / 0.5);
+        }
+
+        /* Glow line animation */
+        .glow-line {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #06b6d4, #8b5cf6, #ec4899, transparent);
+            background-size: 200% 100%;
+            animation: glowMove 3s linear infinite;
+        }
+
+        @keyframes glowMove {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        /* Card hover */
+        .contact-card {
+            transition: all 0.4s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-4px) !important;
+            box-shadow: 0 0 25px rgba(6, 182, 212, 0.15), 0 16px 32px -8px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        /* Neon glow text */
+        .neon-glow {
+            text-shadow: 0 0 10px rgba(6, 182, 212, 0.5), 0 0 30px rgba(6, 182, 212, 0.2);
+        }
+
+        /* Scan line effect */
+        .scan-line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.4), transparent);
+            animation: scanDown 4s linear infinite;
+        }
+
+        @keyframes scanDown {
+            0% {
+                top: 0;
+                opacity: 1;
+            }
+
+            100% {
+                top: 100%;
+                opacity: 0;
+            }
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(6, 182, 212, 0.4);
+            border-radius: 50%;
+            animation: particleFloat 8s ease-in-out infinite;
+        }
+
+        @keyframes particleFloat {
+
+            0%,
+            100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0.3;
+            }
+
+            25% {
+                transform: translateY(-30px) translateX(10px);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: translateY(-50px) translateX(-10px);
+                opacity: 0.5;
+            }
+
+            75% {
+                transform: translateY(-20px) translateX(15px);
+                opacity: 0.7;
+            }
+        }
+
+        /* Input focus glow */
+        input:focus,
+        textarea:focus {
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.15) !important;
+            border-color: rgba(6, 182, 212, 0.4) !important;
+        }
+
+        /* Button pulse */
+        .btn-pulse:hover {
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.3), 0 0 40px rgba(139, 92, 246, 0.15);
+        }
+
+        /* Back button */
+        .back-btn {
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateX(-4px);
+            text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+    <script>
+            (function () {
+                try {
+                    var d = document.documentElement;
+                    var c = d.classList;
+                    c.remove('light', 'dark');
+                    var e = localStorage.getItem('theme');
+                    if ('system' === e || (!e && true)) {
+                        var m = window.matchMedia('(prefers-color-scheme: dark)');
+                        if (m.matches) { d.style.colorScheme = 'dark'; c.add('dark'); }
+                        else { d.style.colorScheme = 'light'; c.add('light'); }
+                    } else if (e) { c.add(e || ''); }
+                    if (e === 'light' || e === 'dark') d.style.colorScheme = e;
+                } catch (e) { }
+            })();
+    </script>
+</head>
+
+<body
+    class="bg-background text-foreground antialiased min-h-screen flex flex-col selection:bg-primary/20 selection:text-primary overflow-x-hidden">
+
+    <div class="fixed top-0 left-0 right-0 h-1 bg-muted z-[60]">
+        <div id="scroll-progress"
+            class="h-full bg-primary origin-left scale-x-0 transition-transform duration-100 ease-out"></div>
+    </div>
+
+    <!-- Header -->
+    <header id="main-header"
+        class="fixed top-4 left-0 right-0 z-50 px-4 md:px-8 flex justify-center transition-all duration-700 ease-out opacity-0 -translate-y-full">
+        <div
+            class="w-full max-w-7xl rounded-2xl bg-card/85 backdrop-blur-md border border-border/50 px-6 py-3 shadow-lg transition-all duration-300">
+            <div class="flex items-center justify-between">
+
+                <!-- Logo & Name -->
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="relative w-10 h-10 transition-transform duration-500 hover:rotate-[360deg]">
+                        <img src="images/logo.png" alt="Logo" class="w-full h-full object-contain">
+                    </div>
+                    <span
+                        class="font-bold text-lg tracking-tight transition-transform duration-300 group-hover:scale-110">GURU
+                        PRASAD</span>
+                </a>
+
+                <!-- Nav -->
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
+                    <a href="index.html#" class="nav-link hover:text-foreground transition-colors">About</a>
+                    <a href="career.html" class="nav-link hover:text-foreground transition-colors">Career</a>
+                    <a href="blog.html" class="nav-link hover:text-foreground transition-colors">Blog</a>
+                    <a href="projects.html" class="nav-link hover:text-foreground transition-colors">Projects</a>
+                    <a href="contact.html"
+                        class="nav-link hover:text-foreground transition-colors text-foreground">Contact</a>
+                </nav>
+
+                <!-- Actions -->
+                <div class="flex items-center gap-2">
+                    <!-- Share Dropdown Wrapper -->
+                    <div class="relative">
+                        <button id="share-btn"
+                            class="p-2 rounded-full hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
+                            aria-label="Share">
+                            <i data-lucide="share-2" class="w-5 h-5"></i>
+                        </button>
+
+                        <!-- Dropdown Menu -->
+                        <div id="share-dropdown" class="share-dropdown">
+                            <div class="share-header">
+                                <i data-lucide="share-2" class="w-4 h-4"></i>
+                                <span>Share via...</span>
+                            </div>
+                            <div class="share-divider"></div>
+                            <a href="#" id="share-twitter" class="share-item" target="_blank">
+                                <i data-lucide="twitter" class="w-4 h-4"></i>
+                                <span>Share on Twitter</span>
+                            </a>
+                            <a href="#" id="share-linkedin" class="share-item" target="_blank">
+                                <i data-lucide="linkedin" class="w-4 h-4"></i>
+                                <span>Share on LinkedIn</span>
+                            </a>
+                            <a href="#" id="share-email" class="share-item">
+                                <i data-lucide="mail" class="w-4 h-4"></i>
+                                <span>Share via Email</span>
+                            </a>
+                            <div class="share-divider"></div>
+                            <button id="copy-link-btn" class="share-item w-full text-left">
+                                <i data-lucide="link" class="w-4 h-4"></i>
+                                <span>Copy Link</span>
+                            </button>
+                        </div>
+                    </div>
+                    <button id="theme-toggle"
+                        class="p-2 rounded-full hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
+                        aria-label="Toggle Theme">
+                        <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
+                        <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                    </button>
+                    <button id="mobile-menu-btn"
+                        class="md:hidden p-2 rounded-full hover:bg-muted transition-colors text-muted-foreground hover:text-foreground">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 md:hidden flex flex-col items-center justify-center space-y-8">
+        <button id="close-menu-btn" class="absolute top-6 right-6 p-2 rounded-full hover:bg-muted">
+            <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+        <a href="index.html#about" class="text-2xl font-bold hover:text-primary transition-colors mobile-link">About</a>
+        <a href="career.html" class="text-2xl font-bold hover:text-primary transition-colors mobile-link">Career</a>
+        <a href="projects.html" class="text-2xl font-bold hover:text-primary transition-colors mobile-link">Projects</a>
+        <a href="contact.html" class="text-2xl font-bold hover:text-primary transition-colors mobile-link">Contact</a>
+    </div>
+
+    <!-- Animated top glow line -->
+    <div class="glow-line fixed top-0 left-0 right-0 z-50"></div>
+
+    <!-- Floating particles background -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div class="particle" style="left: 10%; top: 20%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 30%; top: 40%; animation-delay: 1.5s;"></div>
+        <div class="particle" style="left: 50%; top: 15%; animation-delay: 3s;"></div>
+        <div class="particle" style="left: 70%; top: 60%; animation-delay: 0.8s;"></div>
+        <div class="particle" style="left: 85%; top: 30%; animation-delay: 2.2s;"></div>
+        <div class="particle" style="left: 15%; top: 70%; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 60%; top: 80%; animation-delay: 1s;"></div>
+        <div class="particle" style="left: 40%; top: 55%; animation-delay: 2.8s;"></div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-1 w-full max-w-7xl mx-auto px-4 md:px-8 py-24 md:py-32 relative z-10">
+
+        <!-- Page Header -->
+        <div class="mb-14">
+            <div class="flex items-center gap-4 mb-4">
+                <div class="p-3 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                    <i data-lucide="mail" class="w-7 h-7"></i>
+                </div>
+                <div>
+                    <h1
+                        class="text-3xl md:text-4xl lg:text-5xl font-black tracking-wider neon-glow text-foreground uppercase h-[1.3em] flex items-center">
+                        <span id="typing-contact"></span><span
+                            class="cursor-blink w-0.5 h-8 md:h-10 bg-cyan-400 ml-1 inline-block"
+                            style="animation: blink 1s step-end infinite;"></span>
+                    </h1>
+                    <p class="text-sm text-muted-foreground tracking-[0.2em] mt-1 uppercase">Let's create something
+                        amazing together →</p>
+                </div>
+            </div>
+            <div class="glow-line mt-6 rounded-full"></div>
+        </div>
+
+        <!-- Contact Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <!-- Left: Contact Cards -->
+            <div class="space-y-5">
+
+                <!-- Email Card -->
+                <div
+                    class="contact-card rounded-2xl bg-card border border-border p-6 relative overflow-hidden scan-line">
+                    <div
+                        class="absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b from-cyan-400 to-blue-600 rounded-l-2xl">
+                    </div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-2.5 rounded-lg bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-sm tracking-wider uppercase">Email</div>
+                            <div class="text-xs text-muted-foreground tracking-wide">Get in touch</div>
+                        </div>
+                    </div>
+                    <a href="mailto:reyansh8000@gmail.com"
+                        class="btn-pulse block w-full text-center px-4 py-3 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-xs font-bold text-cyan-400 hover:bg-cyan-500/20 transition-all tracking-widest uppercase">
+                        Send Message
+                    </a>
+                </div>
+
+                <!-- Phone Card -->
+                <div
+                    class="contact-card rounded-2xl bg-card border border-border p-6 relative overflow-hidden scan-line">
+                    <div
+                        class="absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b from-violet-400 to-purple-600 rounded-l-2xl">
+                    </div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-2.5 rounded-lg bg-violet-500/10 text-violet-400 border border-violet-500/20">
+                            <i data-lucide="phone" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-sm tracking-wider uppercase">Phone</div>
+                            <div class="text-xs text-muted-foreground tracking-wide">Available for calls</div>
+                        </div>
+                    </div>
+                    <a href="tel:+918000631202"
+                        class="btn-pulse block w-full text-center px-4 py-3 rounded-xl bg-violet-500/10 border border-violet-500/20 text-xs font-bold text-violet-400 hover:bg-violet-500/20 transition-all tracking-widest uppercase">
+                        Call Now
+                    </a>
+                </div>
+
+                <!-- Location Card -->
+                <div
+                    class="contact-card rounded-2xl bg-card border border-border p-6 relative overflow-hidden scan-line">
+                    <div
+                        class="absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b from-pink-400 to-rose-600 rounded-l-2xl">
+                    </div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-2.5 rounded-lg bg-pink-500/10 text-pink-400 border border-pink-500/20">
+                            <i data-lucide="map-pin" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-sm tracking-wider uppercase">Location</div>
+                            <div class="text-xs text-muted-foreground tracking-wide">Surat, Gujarat</div>
+                        </div>
+                    </div>
+                    <p class="text-xs text-muted-foreground tracking-wide">Available for on-site & remote work</p>
+                </div>
+
+            </div>
+
+            <!-- Right: Contact Form -->
+            <div
+                class="contact-card md:col-span-2 rounded-2xl bg-card border border-border p-6 md:p-8 relative overflow-hidden">
+                <div
+                    class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-cyan-400 via-violet-500 to-pink-500 opacity-90">
+                </div>
+
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="p-2.5 rounded-lg bg-violet-500/10 text-violet-400 border border-violet-500/20">
+                        <i data-lucide="send" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg tracking-wider uppercase">Send a Message</h3>
+                        <p class="text-xs text-muted-foreground tracking-wide">I'll get back to you as soon as possible
+                        </p>
+                    </div>
+                </div>
+
+                <form id="contact-form" class="space-y-6">
+                    <h4 class="text-base tracking-wider uppercase neon-glow">Get in Touch</h4>
+                    <p class="text-xs text-muted-foreground -mt-4 tracking-wide">Please fill out the form below and I'll
+                        get back to you as soon as possible.</p>
+
+                    <!-- Name Row -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[10px] mb-2 tracking-[0.15em] uppercase">First Name <span
+                                    class="text-red-500">*</span></label>
+                            <input type="text" placeholder="Your first name" required
+                                class="w-full px-4 py-3 rounded-xl bg-secondary/30 border border-border text-sm tracking-wide placeholder:text-muted-foreground/40 focus:outline-none transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] mb-2 tracking-[0.15em] uppercase">Last Name</label>
+                            <input type="text" placeholder="Your last name"
+                                class="w-full px-4 py-3 rounded-xl bg-secondary/30 border border-border text-sm tracking-wide placeholder:text-muted-foreground/40 focus:outline-none transition-all">
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label class="block text-[10px] mb-2 tracking-[0.15em] uppercase">Email <span
+                                class="text-red-500">*</span></label>
+                        <input type="email" placeholder="you@example.com" required
+                            class="w-full px-4 py-3 rounded-xl bg-secondary/30 border border-border text-sm tracking-wide placeholder:text-muted-foreground/40 focus:outline-none transition-all">
+                    </div>
+
+                    <!-- Message -->
+                    <div>
+                        <label class="block text-[10px] mb-2 tracking-[0.15em] uppercase">Message <span
+                                class="text-red-500">*</span></label>
+                        <textarea rows="5" placeholder="Enter your message here..." required
+                            class="w-full px-4 py-3 rounded-xl bg-secondary/30 border border-border text-sm tracking-wide placeholder:text-muted-foreground/40 focus:outline-none transition-all resize-y"></textarea>
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="submit"
+                        class="btn-pulse w-full flex items-center justify-center gap-3 px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500/10 via-violet-500/10 to-pink-500/10 border border-cyan-500/20 text-sm font-bold tracking-[0.2em] uppercase hover:from-cyan-500/20 hover:via-violet-500/20 hover:to-pink-500/20 transition-all">
+                        <i data-lucide="send" class="w-4 h-4 text-cyan-400"></i>
+                        <span class="neon-glow">Send Message</span>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+        <!-- Bottom glow line -->
+        <div class="glow-line mt-14 rounded-full"></div>
+
+        <!-- Footer -->
+        <div class="mt-20 w-full px-4 md:px-8 pb-8">
+            <div
+                class="w-full max-w-7xl mx-auto rounded-2xl bg-zinc-950/90 border border-white/5 p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 backdrop-blur-xl">
+
+                <!-- Left: Copyright -->
+                <div class="text-xs text-zinc-400 font-medium tracking-wide">
+                    &copy; 2026 <span class="text-zinc-600 mx-2">-</span> <span
+                        class="text-zinc-100 font-bold tracking-[0.2em] uppercase">G U R U &nbsp; P R A S A D</span>
+                    <span class="text-zinc-600 mx-2">—</span> All rights reserved.
+                </div>
+
+                <!-- Center: Links -->
+                <nav class="flex flex-wrap justify-center gap-6 text-xs font-medium text-zinc-400">
+                    <a href="index.html#" class="hover:text-white transition-colors">About</a>
+                    <a href="career.html" class="hover:text-white transition-colors">Career</a>
+                    <a href="blog.html" class="hover:text-white transition-colors">Blog</a>
+                    <a href="projects.html" class="hover:text-white transition-colors">Projects</a>
+                    <a href="contact.html" class="hover:text-white transition-colors">Contact</a>
+                </nav>
+
+                <!-- Right: Back to top -->
+                <button id="footer-back-to-top"
+                    class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-zinc-200 text-xs font-semibold transition-all border border-white/5 hover:border-white/10">
+                    <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i> Back to top
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Floating Back To Top Button -->
+    <button id="floating-back-to-top"
+        class="fixed bottom-6 right-6 p-4 rounded-full bg-white text-black border border-border shadow-2xl hover:scale-110 transition-all duration-300 z-50 hidden md:flex items-center justify-center group">
+        <i data-lucide="arrow-up" class="w-5 h-5 group-hover:-translate-y-1 transition-transform"></i>
+    </button>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+
+        // Theme Toggle
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', () => {
+                htmlElement.classList.toggle('dark');
+                const isDark = htmlElement.classList.contains('dark');
+                localStorage.theme = isDark ? 'dark' : 'light';
+                htmlElement.style.colorScheme = isDark ? 'dark' : 'light';
+            });
+        }
+
+        // Header Animation
+        const header = document.getElementById('main-header');
+        setTimeout(() => {
+            if (header) header.classList.remove('opacity-0', '-translate-y-full');
+        }, 100);
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.remove('translate-x-full'));
+            closeMenuBtn?.addEventListener('click', () => mobileMenu.classList.add('translate-x-full'));
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => mobileMenu.classList.add('translate-x-full'));
+            });
+        }
+
+        // Scroll Progress
+        window.addEventListener('scroll', () => {
+            const prog = document.getElementById('scroll-progress');
+            if (prog) {
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                prog.style.transform = `scaleX(${docHeight > 0 ? scrollTop / docHeight : 0})`;
+            }
+        });
+
+        // Typing animation for heading
+        const typingEl = document.getElementById('typing-contact');
+        const phrases = ["Let's collaborate 💼", "Reach out anytime!", "Contact"];
+        let phraseIndex = 0;
+
+        function typePhrase() {
+            if (!typingEl) return;
+            const text = phrases[phraseIndex];
+            let i = 0;
+            typingEl.textContent = "";
+
+            const typeInterval = setInterval(() => {
+                typingEl.textContent += text.charAt(i);
+                i++;
+                if (i > text.length - 1) {
+                    clearInterval(typeInterval);
+                    setTimeout(() => {
+                        deletePhrase(text);
+                    }, 3000);
+                }
+            }, 80);
+        }
+
+        function deletePhrase(text) {
+            let len = text.length;
+            const deleteInterval = setInterval(() => {
+                typingEl.textContent = text.substring(0, len);
+                len--;
+                if (len < 0) {
+                    clearInterval(deleteInterval);
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    setTimeout(typePhrase, 400);
+                }
+            }, 40);
+        }
+
+        typePhrase();
+
+        // Form submit handler
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const btn = this.querySelector('button[type="submit"]');
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<span class="neon-glow">Message Sent ✓</span>';
+            btn.style.borderColor = 'rgba(6, 182, 212, 0.5)';
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+                btn.style.borderColor = '';
+                lucide.createIcons();
+                this.reset();
+            }, 3000);
+        });
+
+        // Back to top buttons
+        document.getElementById('footer-back-to-top')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        document.getElementById('floating-back-to-top')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // Show/Hide floating button
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('floating-back-to-top');
+            if (window.scrollY > 500) {
+                btn?.classList.remove('opacity-0', 'translate-y-10');
+            }
+        });
+    </script>
+    <!-- Copy Link Feedback Toast -->
+    <div id="copy-feedback" class="copy-feedback">
+        Link Copied!
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

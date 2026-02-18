@@ -1,260 +1,830 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guru Prasad Yadav | DevOps Engineer Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Guru Prasad Yadav | Portfolio</title>
+    <meta name="description"
+        content="System Administrator & Sr. Hardware and Network Engineer focused on server management, network security, and IT automation.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        border: "hsl(var(--border))",
+                        input: "hsl(var(--input))",
+                        ring: "hsl(var(--ring))",
+                        background: "hsl(var(--background))",
+                        foreground: "hsl(var(--foreground))",
+                        primary: {
+                            DEFAULT: "hsl(var(--primary))",
+                            foreground: "hsl(var(--primary-foreground))",
+                        },
+                        secondary: {
+                            DEFAULT: "hsl(var(--secondary))",
+                            foreground: "hsl(var(--secondary-foreground))",
+                        },
+                        destructive: {
+                            DEFAULT: "hsl(var(--destructive))",
+                            foreground: "hsl(var(--destructive-foreground))",
+                        },
+                        muted: {
+                            DEFAULT: "hsl(var(--muted))",
+                            foreground: "hsl(var(--muted-foreground))",
+                        },
+                        accent: {
+                            DEFAULT: "hsl(var(--accent))",
+                            foreground: "hsl(var(--accent-foreground))",
+                        },
+                        popover: {
+                            DEFAULT: "hsl(var(--popover))",
+                            foreground: "hsl(var(--popover-foreground))",
+                        },
+                        card: {
+                            DEFAULT: "hsl(var(--card))",
+                            foreground: "hsl(var(--card-foreground))",
+                        },
+                    },
+                    borderRadius: {
+                        lg: "var(--radius)",
+                        md: "calc(var(--radius) - 2px)",
+                        sm: "calc(var(--radius) - 4px)",
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Geist Mono', 'Roboto Mono', 'monospace'],
+                        heading: ['Space Grotesk', 'sans-serif'],
+                    },
+                    animation: {
+                        "fade-in-up": "fadeInUp 0.8s ease-out forwards",
+                        "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+                        "float": "float 6s ease-in-out infinite",
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    },
+                },
+            },
+        }
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --background: 0 0% 100%;
+            --foreground: 0 0% 3.9%;
+            --card: 0 0% 100%;
+            --card-foreground: 0 0% 3.9%;
+            --popover: 0 0% 100%;
+            --popover-foreground: 0 0% 3.9%;
+            --primary: 0 0% 9%;
+            --primary-foreground: 0 0% 98%;
+            --secondary: 0 0% 96.1%;
+            --secondary-foreground: 0 0% 9%;
+            --muted: 0 0% 96.1%;
+            --muted-foreground: 0 0% 45.1%;
+            --accent: 0 0% 96.1%;
+            --accent-foreground: 0 0% 9%;
+            --destructive: 0 84.2% 60.2%;
+            --destructive-foreground: 0 0% 98%;
+            --border: 0 0% 89.8%;
+            --input: 0 0% 89.8%;
+            --ring: 0 0% 3.9%;
+            --radius: 0.75rem;
+        }
+
+        .dark {
+            --background: 240 10% 3.9%;
+            --foreground: 0 0% 98%;
+            --card: 240 10% 5%;
+            --card-foreground: 0 0% 98%;
+            --popover: 240 10% 3.9%;
+            --popover-foreground: 0 0% 98%;
+            --primary: 0 0% 98%;
+            --primary-foreground: 240 5.9% 10%;
+            --secondary: 240 3.7% 15.9%;
+            --secondary-foreground: 0 0% 98%;
+            --muted: 240 3.7% 15.9%;
+            --muted-foreground: 240 5% 64.9%;
+            --accent: 240 3.7% 15.9%;
+            --accent-foreground: 0 0% 98%;
+            --destructive: 0 62.8% 30.6%;
+            --destructive-foreground: 0 0% 98%;
+            --border: 240 3.7% 15.9%;
+            --input: 240 3.7% 15.9%;
+            --ring: 240 4.9% 83.9%;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            letter-spacing: -0.011em;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        /* Scroll fade-in animation */
+        .scroll-fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .scroll-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .bento-card {
+            transition: all 0.5s ease;
+            position: relative;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-4px) !important;
+            box-shadow:
+                0 16px 32px -8px rgba(0, 0, 0, 0.15),
+                inset 0 -3px 8px rgba(0, 0, 0, 0.05) !important;
+            border-color: hsl(var(--primary) / 0.3) !important;
+        }
+
+        .dark .bento-card:hover {
+            box-shadow:
+                0 16px 32px -8px rgba(0, 0, 0, 0.7),
+                inset 0 -3px 10px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        /* --- Tech Tags: highlighted/pressed deeper + white glow --- */
+        .tech-tag {
+            transition: all 0.4s ease;
+        }
+
+        .tech-tag:hover {
+            background-color: hsl(var(--muted)) !important;
+            border-color: hsl(var(--foreground) / 0.35) !important;
+            box-shadow:
+                inset 0 2px 8px rgba(0, 0, 0, 0.12),
+                0 0 12px rgba(255, 255, 255, 0.08) !important;
+        }
+
+        .dark .tech-tag:hover {
+            background-color: hsl(240 4% 24%) !important;
+            border-color: hsl(0 0% 70% / 0.25) !important;
+            box-shadow:
+                inset 0 2px 8px rgba(0, 0, 0, 0.45),
+                0 0 14px rgba(255, 255, 255, 0.06) !important;
+        }
+
+        /* --- Achievement Items: gentle pop-up --- */
+        .achievement-item {
+            transition: all 0.5s ease;
+        }
+
+        .achievement-item:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 18px -4px rgba(0, 0, 0, 0.1) !important;
+            border-color: hsl(var(--primary) / 0.25) !important;
+        }
+
+        .dark .achievement-item:hover {
+            box-shadow: 0 8px 18px -4px rgba(0, 0, 0, 0.5) !important;
+        }
+
+        /* --- Service Cards --- */
+        .service-card {
+            transition: all 0.5s ease;
+            padding: 16px;
+            border-radius: 16px;
+            border: 1px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-2px) !important;
+            background: hsl(var(--secondary) / 0.5) !important;
+            border-color: hsl(var(--border)) !important;
+            box-shadow: 0 6px 16px -4px rgba(0, 0, 0, 0.08) !important;
+        }
+
+        /* --- Connect pills --- */
+        .connect-pill {
+            transition: all 0.5s ease;
+        }
+
+        .connect-pill:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 14px -4px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        /* Nav Link Underline */
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: hsl(var(--primary));
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        .cursor-blink {
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: hsl(var(--muted-foreground) / 0.3);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: hsl(var(--muted-foreground) / 0.5);
+        }
+    </style>
     <link rel="stylesheet" href="style.css">
+    <script>
+            (function () {
+                try {
+                    var d = document.documentElement;
+                    var c = d.classList;
+                    c.remove('light', 'dark');
+                    var e = localStorage.getItem('theme');
+                    if ('system' === e || (!e && true)) {
+                        var m = window.matchMedia('(prefers-color-scheme: dark)');
+                        if (m.matches) { d.style.colorScheme = 'dark'; c.add('dark'); }
+                        else { d.style.colorScheme = 'light'; c.add('light'); }
+                    } else if (e) { c.add(e || ''); }
+                    if (e === 'light' || e === 'dark') d.style.colorScheme = e;
+                } catch (e) { }
+            })();
+    </script>
 </head>
 
-<body class="dark">
+<body
+    class="bg-background text-foreground antialiased min-h-screen flex flex-col selection:bg-primary/20 selection:text-primary overflow-x-hidden">
 
-    <!-- Floating Navigation -->
-    <nav class="floating-nav">
-        <div class="brand-container">
-            <div class="logo-box">
-                <img src="images/logo.png" alt="Guru Prasad Logo">
-            </div>
-            <span class="brand-text">GURU</span>
-        </div>
-
-        <div class="nav-links">
-            <a href="#about" class="nav-link active">About</a>
-            <a href="#technologies" class="nav-link">Skills</a>
-            <a href="#what-i-do" class="nav-link">Services</a>
-            <a href="#projects" class="nav-link">Projects</a>
-            <a href="#contact" class="nav-link">Contact</a>
-        </div>
-
-        <div class="nav-icons">
-            <button class="icon-btn" title="Shortcuts" aria-label="Keyboard shortcuts">
-                <i class="far fa-keyboard"></i>
-            </button>
-            <button class="icon-btn" title="Share" aria-label="Share profile">
-                <i class="fas fa-share-nodes"></i>
-            </button>
-            <button class="icon-btn theme-toggle" onclick="toggleTheme()" title="Toggle Theme" aria-label="Toggle theme">
-                <i class="fas fa-moon"></i>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Main Container -->
-    <div class="container">
-        <div class="main-grid">
-
-            <!-- Profile Column -->
-            <div class="profile-column">
-
-                <!-- Profile Card -->
-                <div class="profile-card fade-in-up gradient-border border-red">
-                    <div class="profile-wrapper">
-                        <div class="profile-frame">
-                            <img id="profile-pic" src="images/profile1.jpg" alt="Guru Prasad Yadav" class="profile-img">
-                        </div>
-                        <div class="online-dot"></div>
-                    </div>
-
-                    <h1 class="hero-name">
-                        <span id="typing-name"></span><span class="cursor">|</span>
-                    </h1>
-
-                    <div class="status-badge">
-                        <span class="pulse-dot"></span> Available for Work
-                    </div>
-
-                    <p class="bio-text">
-                        DevOps Engineer focused on automation, scalability, and cloud infrastructure. Based in India 🇮🇳
-                    </p>
-
-                    <div class="stats-row">
-                        <div class="stat-item">
-                            <h3 class="stat-number">4+</h3>
-                            <span>Years</span>
-                        </div>
-                        <div class="stat-item">
-                            <h3 class="stat-number">50+</h3>
-                            <span>Projects</span>
-                        </div>
-                        <div class="stat-item">
-                            <h3 class="stat-number">10+</h3>
-                            <span>Clients</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Achievements Card -->
-                <div class="achievements-card fade-in-up gradient-border border-gold" style="animation-delay: 0.2s;">
-                    <div class="card-title">
-                        <div class="icon-circle gold"><i class="fas fa-trophy"></i></div>
-                        <div>
-                            <h4>Achievements</h4>
-                            <span>Community Impact</span>
-                        </div>
-                    </div>
-
-                    <div class="achievement-list">
-                        <div class="achieve-item">
-                            <i class="fab fa-github"></i>
-                            <div>
-                                <h5>2.5K+ followers</h5>
-                                <span>GitHub Community</span>
-                            </div>
-                        </div>
-                        <div class="achieve-item">
-                            <i class="fab fa-linkedin"></i>
-                            <div>
-                                <h5>3K+ followers</h5>
-                                <span>LinkedIn Network</span>
-                            </div>
-                        </div>
-                        <div class="achieve-item">
-                            <i class="fas fa-newspaper"></i>
-                            <div>
-                                <h5>13K+ followers</h5>
-                                <span>Dev.to Community</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Content Column -->
-            <div class="content-column">
-
-                <!-- About Section -->
-                <section id="about" class="content-box fade-in-up gradient-border border-blue" style="animation-delay: 0.3s;">
-                    <div class="box-header">
-                        <div class="icon-circle blue"><i class="fas fa-globe"></i></div>
-                        <div>
-                            <h4>About Me</h4>
-                            <span>Professional Overview</span>
-                        </div>
-                    </div>
-                    <p>
-                        I'm a passionate DevOps Engineer on a mission to automate everything and build highly scalable
-                        cloud infrastructures. With a strong focus on cloud computing, automation, and DevOps best practices,
-                        I specialize in streamlining deployments, optimizing workflows, and maintaining high-performance
-                        infrastructure. I work on real-time DevOps and cloud projects involving AWS, Azure, Terraform,
-                        Kubernetes, and Docker.
-                    </p>
-                </section>
-
-                <!-- Technologies Section -->
-                <section id="technologies" class="content-box fade-in-up gradient-border border-purple" style="animation-delay: 0.4s;">
-                    <div class="box-header">
-                        <div class="icon-circle purple"><i class="fab fa-docker"></i></div>
-                        <div>
-                            <h4>Core Technologies</h4>
-                            <span>Technical Expertise</span>
-                        </div>
-                    </div>
-
-                    <div class="tech-container">
-                        <span class="tech-badge">AWS</span>
-                        <span class="tech-badge">Azure</span>
-                        <span class="tech-badge">Terraform</span>
-                        <span class="tech-badge">Kubernetes</span>
-                        <span class="tech-badge">Docker</span>
-                        <span class="tech-badge">DevOps</span>
-                        <span class="tech-badge">Cloud Infrastructure</span>
-                        <span class="tech-badge">CI/CD</span>
-                        <span class="tech-badge">Ansible</span>
-                        <span class="tech-badge">Python</span>
-                    </div>
-                </section>
-
-                <!-- Services Section -->
-                <section id="what-i-do" class="content-box fade-in-up gradient-border border-orange" style="animation-delay: 0.5s;">
-                    <div class="box-header">
-                        <div class="icon-circle orange"><i class="fas fa-microchip"></i></div>
-                        <div>
-                            <h4>What I Do</h4>
-                            <span>Services & Expertise</span>
-                        </div>
-                    </div>
-
-                    <div class="services-list">
-                        <div class="service-item">
-                            <h5><i class="fas fa-cloud"></i> Cloud & DevOps Specialist</h5>
-                            <ul>
-                                <li>Architecting scalable infrastructures</li>
-                                <li>AWS, Azure, Kubernetes expert</li>
-                            </ul>
-                        </div>
-                        <div class="service-item">
-                            <h5><i class="fas fa-robot"></i> Automation Enthusiast</h5>
-                            <ul>
-                                <li>CI/CD pipelines</li>
-                                <li>Infrastructure as Code (IaC)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Projects Section -->
-                <section id="projects" class="content-box fade-in-up gradient-border border-green" style="animation-delay: 0.6s;">
-                    <div class="box-header">
-                        <div class="icon-circle green"><i class="fas fa-code"></i></div>
-                        <div>
-                            <h4>Projects</h4>
-                            <span>Recent Work</span>
-                        </div>
-                    </div>
-                    <div class="projects-grid">
-                        <div class="project-mini">
-                            <i class="far fa-folder-open"></i>
-                            <span>TGS Admin</span>
-                        </div>
-                        <div class="project-mini">
-                            <i class="fas fa-server"></i>
-                            <span>Home Lab</span>
-                        </div>
-                        <div class="project-mini">
-                            <i class="fas fa-network-wired"></i>
-                            <span>RMM Tool</span>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Contact Section -->
-                <section id="contact" class="content-box fade-in-up gradient-border border-cyan" style="animation-delay: 0.7s;">
-                    <div class="box-header">
-                        <div class="icon-circle cyan"><i class="fas fa-envelope"></i></div>
-                        <div>
-                            <h4>Get In Touch</h4>
-                            <span>Let's Connect</span>
-                        </div>
-                    </div>
-                    <div class="contact-links">
-                        <a href="mailto:guru@example.com" class="contact-link">
-                            <i class="fas fa-envelope"></i>
-                            <span>Email Me</span>
-                        </a>
-                        <a href="https://github.com/guruprasad" class="contact-link" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-github"></i>
-                            <span>GitHub</span>
-                        </a>
-                        <a href="https://linkedin.com/in/guruprasad" class="contact-link" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-linkedin"></i>
-                            <span>LinkedIn</span>
-                        </a>
-                    </div>
-                </section>
-
-            </div>
-        </div>
+    <div class="fixed top-0 left-0 right-0 h-1 bg-muted z-[60]">
+        <div id="scroll-progress"
+            class="h-full bg-primary origin-left scale-x-0 transition-transform duration-100 ease-out"></div>
     </div>
 
-    <!-- Scroll to Top Button -->
-    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
-        <i class="fas fa-arrow-up"></i>
+    <!-- Header -->
+    <header id="main-header"
+        class="fixed top-4 left-0 right-0 z-50 px-4 md:px-8 flex justify-center transition-all duration-700 ease-out opacity-0 -translate-y-full">
+        <div
+            class="w-full max-w-7xl rounded-2xl bg-card/85 backdrop-blur-md border border-border/50 px-6 py-3 shadow-lg transition-all duration-300">
+            <div class="flex items-center justify-between">
+
+                <!-- Logo & Name -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="relative w-10 h-10 transition-transform duration-500 hover:rotate-[360deg]">
+                        <img src="images/logo.png" alt="Logo" class="w-full h-full object-contain">
+                    </div>
+                    <span
+                        class="font-bold text-lg tracking-tight transition-transform duration-300 group-hover:scale-110">GURU
+                        PRASAD</span>
+                </a>
+
+                <!-- Nav -->
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
+                    <a href="#" class="nav-link hover:text-foreground transition-colors">About</a>
+                    <a href="career.html" class="nav-link hover:text-foreground transition-colors">Career</a>
+                    <a href="blog.html" class="nav-link hover:text-foreground transition-colors">Blog</a>
+                    <a href="projects.html" class="nav-link hover:text-foreground transition-colors">Projects</a>
+                    <a href="contact.html" class="nav-link hover:text-foreground transition-colors">Contact</a>
+                </nav>
+
+                <!-- Actions -->
+                <div class="flex items-center gap-2">
+                    <!-- Share Dropdown Wrapper -->
+                    <div class="relative">
+                        <button id="share-btn"
+                            class="p-2 rounded-full hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
+                            aria-label="Share">
+                            <i data-lucide="share-2" class="w-5 h-5"></i>
+                        </button>
+
+                        <!-- Dropdown Menu -->
+                        <div id="share-dropdown" class="share-dropdown">
+                            <div class="share-header">
+                                <i data-lucide="share-2" class="w-4 h-4"></i>
+                                <span>Share via...</span>
+                            </div>
+                            <div class="share-divider"></div>
+                            <a href="#" id="share-twitter" class="share-item" target="_blank">
+                                <i data-lucide="twitter" class="w-4 h-4"></i>
+                                <span>Share on Twitter</span>
+                            </a>
+                            <a href="#" id="share-linkedin" class="share-item" target="_blank">
+                                <i data-lucide="linkedin" class="w-4 h-4"></i>
+                                <span>Share on LinkedIn</span>
+                            </a>
+                            <a href="#" id="share-email" class="share-item">
+                                <i data-lucide="mail" class="w-4 h-4"></i>
+                                <span>Share via Email</span>
+                            </a>
+                            <div class="share-divider"></div>
+                            <button id="copy-link-btn" class="share-item w-full text-left">
+                                <i data-lucide="link" class="w-4 h-4"></i>
+                                <span>Copy Link</span>
+                            </button>
+                        </div>
+                    </div>
+                    <button id="theme-toggle"
+                        class="p-2 rounded-full hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
+                        aria-label="Toggle Theme">
+                        <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
+                        <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                    </button>
+                    <button id="mobile-menu-btn"
+                        class="md:hidden p-2 rounded-full hover:bg-muted transition-colors text-muted-foreground hover:text-foreground">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 md:hidden flex flex-col items-center justify-center space-y-8">
+        <button id="close-menu-btn" class="absolute top-6 right-6 p-2 rounded-full hover:bg-muted">
+            <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+        <a href="#about" class="text-2xl font-bold hover:text-primary transition-colors mobile-link">About</a>
+        <a href="career.html" class="text-2xl font-bold hover:text-primary transition-colors mobile-link">Career</a>
+        <a href="projects.html" class="text-2xl font-bold hover:text-primary transition-colors mobile-link">Projects</a>
+        <a href="contact.html" class="text-2xl font-bold hover:text-primary transition-colors mobile-link">Contact</a>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-20 sm:py-24 md:py-32">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
+
+            <!-- Sidebar -->
+            <div class="lg:col-span-1 space-y-6">
+                <!-- Profile Card [BLUE GRADIENT TOP] -->
+                <div
+                    class="bento-card rounded-3xl bg-card border border-border p-8 text-center relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 opacity-90">
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+
+                    <div class="relative w-32 h-32 mx-auto mb-6 animate-float">
+                        <div
+                            class="w-full h-full rounded-full overflow-hidden ring-4 ring-border group-hover:ring-primary/20 transition-all duration-300">
+                            <img id="profile-image" src="images/profile1.jpg" alt="Profile"
+                                class="w-full h-full object-cover transition-opacity duration-500">
+                        </div>
+                        <div class="absolute bottom-2 right-2 w-5 h-5 bg-green-500 rounded-full border-4 border-card z-10"
+                            title="Online">
+                            <span class="absolute inset-0 rounded-full bg-green-500 animate-ping opacity-75"></span>
+                        </div>
+                    </div>
+
+                    <h1 class="text-xl sm:text-2xl md:text-3xl font-bold mb-3 h-8 flex items-center justify-center">
+                        <span id="typing-name"></span><span class="cursor-blink w-0.5 h-6 bg-primary ml-1"></span>
+                    </h1>
+
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 text-green-600 dark:text-green-400 text-xs font-semibold mb-6 border border-green-500/20">
+                        <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                        Available for Work
+                    </div>
+
+                    <p class="text-muted-foreground text-sm leading-relaxed mb-8">
+                        System Administrator & Sr. Hardware and Network Engineer focused on server management, network
+                        security, and IT infrastructure. Based in Surat, Gujarat.
+                    </p>
+
+                    <div class="flex justify-center gap-8 border-t border-border pt-6">
+                        <div class="text-center">
+                            <div class="text-xl font-bold text-foreground">5+</div>
+                            <div class="text-xs text-muted-foreground font-medium uppercase tracking-wider">Years</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-xl font-bold text-foreground">50+</div>
+                            <div class="text-xs text-muted-foreground font-medium uppercase tracking-wider">Projects
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-xl font-bold text-foreground">10+</div>
+                            <div class="text-xs text-muted-foreground font-medium uppercase tracking-wider">Clients
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievements [YELLOW GRADIENT TOP] -->
+                <div class="bento-card rounded-3xl bg-card border border-border p-6 space-y-4 relative overflow-hidden">
+                    <div
+                        class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-500 to-orange-500 opacity-90">
+                    </div>
+
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="p-2 rounded-lg bg-yellow-500/10 text-yellow-500">
+                            <i data-lucide="trophy" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Experience</h3>
+                            <p class="text-xs text-muted-foreground">Career Highlights</p>
+                        </div>
+                    </div>
+
+                    <!-- Achievement Items -->
+                    <div class="space-y-3">
+                        <a href="https://triveniglobalsoft.com/"
+                            class="achievement-item flex items-center gap-4 p-4 rounded-xl bg-secondary/30 hover:bg-secondary/60 border border-border/50 hover:border-primary/20 transition-all group/item">
+                            <i data-lucide="building-2"
+                                class="w-5 h-5 text-muted-foreground group-hover/item:text-foreground transition-colors"></i>
+                            <div>
+                                <div class="font-bold text-sm">Triveni Global Software</div>
+                                <div class="text-xs text-muted-foreground">Sr. HW & Network Engineer • 2024–Present
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="https://www.significantinfotech.com/"
+                            class="achievement-item flex items-center gap-4 p-4 rounded-xl bg-secondary/30 hover:bg-secondary/60 border border-border/50 hover:border-primary/20 transition-all group/item">
+                            <i data-lucide="server"
+                                class="w-5 h-5 text-muted-foreground group-hover/item:text-blue-500 transition-colors"></i>
+                            <div>
+                                <div class="font-bold text-sm">Significant Infotech</div>
+                                <div class="text-xs text-muted-foreground">System Admin • 2021–2024</div>
+                            </div>
+                        </a>
+
+                        <a href="https://www.vasundhara.io/"
+                            class="achievement-item flex items-center gap-4 p-4 rounded-xl bg-secondary/30 hover:bg-secondary/60 border border-border/50 hover:border-primary/20 transition-all group/item">
+                            <i data-lucide="network"
+                                class="w-5 h-5 text-muted-foreground group-hover/item:text-green-500 transition-colors"></i>
+                            <div>
+                                <div class="font-bold text-sm">Vasundhara Infotech</div>
+                                <div class="text-xs text-muted-foreground">System Admin • 2019–2021</div>
+                            </div>
+                        </a>
+                        <a href=""
+                            class="achievement-item flex items-center gap-4 p-4 rounded-xl bg-secondary/30 hover:bg-secondary/60 border border-border/50 hover:border-primary/20 transition-all group/item">
+                            <i data-lucide="wifi" class="w-5 h-5 text-yellow-500"></i>
+                            <div>
+                                <div class="font-bold text-sm">You Broadband Pvt Ltd</div>
+                                <div class="text-xs text-muted-foreground">Network Technician • 2017–2019</div>
+                            </div>
+                            <a href="https://youbroadband.in/"
+                                class="achievement-item flex items-center gap-4 p-4 rounded-xl bg-purple-500/5 hover:bg-purple-500/10 border border-purple-500/20 hover:border-purple-500/40 transition-all group/item relative overflow-hidden">
+                                <div
+                                    class="absolute inset-0 bg-purple-500/5 opacity-0 group-hover/item:opacity-100 transition-opacity">
+                                </div>
+                                <i data-lucide="award"
+                                    class="w-5 h-5 text-purple-500 transition-colors relative z-10"></i>
+                                <div class="relative z-10">
+                                    <div class="font-bold text-sm text-foreground">JCHNE+ Certified</div>
+                                    <div class="text-xs text-muted-foreground">Jetking Hardware & Networking</div>
+                                </div>
+                            </a>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="lg:col-span-2 space-y-6">
+
+                <!-- About [BLUE/PURPLE GRADIENT TOP] -->
+                <div id="about"
+                    class="bento-card scroll-fade-in rounded-3xl bg-card border border-border p-8 relative overflow-hidden">
+                    <div
+                        class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-90">
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-transparent"></div>
+
+                    <div class="flex items-center gap-3 mb-6 relative z-10">
+                        <div class="p-2 rounded-lg bg-blue-500/10 text-blue-500">
+                            <i data-lucide="globe" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h2 class="font-bold text-xl">About Me</h2>
+                            <p class="text-xs text-muted-foreground uppercase tracking-wider font-medium">Professional
+                                Overview</p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="prose dark:prose-invert text-muted-foreground text-sm leading-relaxed max-w-none relative z-10">
+                        <p class="mb-4">
+                            Experienced System Administrator specializing in securing and maintaining robust IT
+                            ecosystems. I bring over 5+ years of expertise in server management, network security,
+                            and data recovery. My focus is on proactive monitoring and rapid troubleshooting to
+                            protect data and ensure business continuity.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Career/Skills [PINK/ROSE GRADIENT TOP] -->
+                <div id="career"
+                    class="bento-card scroll-fade-in rounded-3xl bg-card border border-border p-8 relative overflow-hidden">
+                    <div
+                        class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-pink-500 to-rose-500 opacity-90">
+                    </div>
+
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-2 rounded-lg bg-pink-500/10 text-pink-500">
+                            <i data-lucide="cpu" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h2 class="font-bold text-xl">Core Technologies</h2>
+                            <p class="text-xs text-muted-foreground uppercase tracking-wider font-medium">Technical
+                                Expertise</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span
+                            class="tech-tag px-3 py-1.5 rounded-full bg-secondary/50 border border-border text-xs font-semibold hover:bg-secondary transition-all text-foreground cursor-default">PowerShell
+                            Scripting</span>
+                        <span
+                            class="tech-tag px-3 py-1.5 rounded-full bg-secondary/50 border border-border text-xs font-semibold hover:bg-secondary transition-all text-foreground cursor-default">Server
+                            & Network Admin</span>
+                        <span
+                            class="tech-tag px-3 py-1.5 rounded-full bg-secondary/50 border border-border text-xs font-semibold hover:bg-secondary transition-all text-foreground cursor-default">Firewall
+                            & VPN Security</span>
+                        <span
+                            class="tech-tag px-3 py-1.5 rounded-full bg-secondary/50 border border-border text-xs font-semibold hover:bg-secondary transition-all text-foreground cursor-default">Active
+                            Directory & GPO</span>
+                        <span
+                            class="tech-tag px-3 py-1.5 rounded-full bg-secondary/50 border border-border text-xs font-semibold hover:bg-secondary transition-all text-foreground cursor-default">Virtualization</span>
+                        <span
+                            class="tech-tag px-3 py-1.5 rounded-full bg-secondary/50 border border-border text-xs font-semibold hover:bg-secondary transition-all text-foreground cursor-default">Backup
+                            & Disaster Recovery</span>
+                        <span
+                            class="tech-tag px-3 py-1.5 rounded-full bg-secondary/50 border border-border text-xs font-semibold hover:bg-secondary transition-all text-foreground cursor-default">MacOS
+                            (Hackintosh)</span>
+                        <span
+                            class="tech-tag px-3 py-1.5 rounded-full bg-secondary/50 border border-border text-xs font-semibold hover:bg-secondary transition-all text-foreground cursor-default">IT
+                            Asset Management</span>
+                        <span
+                            class="tech-tag px-3 py-1.5 rounded-full bg-secondary/50 border border-border text-xs font-semibold hover:bg-secondary transition-all text-foreground cursor-default">System
+                            Monitoring</span>
+                    </div>
+                </div>
+
+                <!-- What I Do [PURPLE GRADIENT TOP] -->
+                <div
+                    class="bento-card scroll-fade-in rounded-3xl bg-card border border-border p-8 relative overflow-hidden">
+                    <div
+                        class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-violet-500 opacity-90">
+                    </div>
+
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-2 rounded-lg bg-purple-500/10 text-purple-500">
+                            <i data-lucide="sparkles" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h2 class="font-bold text-xl">What I Do</h2>
+                            <p class="text-xs text-muted-foreground uppercase tracking-wider font-medium">Services &
+                                Expertise</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+                        <div class="service-card space-y-3">
+                            <h3 class="font-bold flex items-center gap-2 text-sm">
+                                <i data-lucide="shield" class="w-4 h-4 text-blue-500"></i> Security & Firewall
+                            </h3>
+                            <p class="text-xs text-muted-foreground leading-relaxed">Managing firewall rules, VPN/WFH
+                                security, and comprehensive network protection.</p>
+                        </div>
+                        <div class="service-card space-y-3">
+                            <h3 class="font-bold flex items-center gap-2 text-sm">
+                                <i data-lucide="terminal" class="w-4 h-4 text-green-500"></i> Automation
+                            </h3>
+                            <p class="text-xs text-muted-foreground leading-relaxed">PowerShell automation for daily,
+                                weekly & monthly routine maintenance tasks.</p>
+                        </div>
+                        <div class="service-card space-y-3">
+                            <h3 class="font-bold flex items-center gap-2 text-sm">
+                                <i data-lucide="server" class="w-4 h-4 text-purple-500"></i> Server Administration
+                            </h3>
+                            <p class="text-xs text-muted-foreground leading-relaxed">Windows Server, Linux & MacOS
+                                administration, optimization & maintenance.</p>
+                        </div>
+                        <div class="service-card space-y-3">
+                            <h3 class="font-bold flex items-center gap-2 text-sm">
+                                <i data-lucide="wrench" class="w-4 h-4 text-orange-500"></i> Troubleshooting
+                            </h3>
+                            <p class="text-xs text-muted-foreground leading-relaxed">Resolving complex hardware/software
+                                issues & optimizing system performance.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projects [GREEN GRADIENT TOP] -->
+                <div id="projects" class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6">
+                    <div
+                        class="bento-card rounded-3xl bg-card border border-border overflow-hidden group flex flex-col h-full relative">
+                        <div
+                            class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-green-500 to-emerald-500 opacity-90">
+                        </div>
+                        <div
+                            class="h-40 bg-gradient-to-br from-blue-500/10 to-purple-500/10 flex items-center justify-center border-b border-border/50">
+                            <i data-lucide="layout-dashboard"
+                                class="w-12 h-12 text-primary/40 group-hover:scale-110 transition-transform duration-500"></i>
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <h3 class="font-bold text-lg mb-2 group-hover:text-primary transition-colors">IT
+                                Infrastructure</h3>
+                            <p class="text-xs text-muted-foreground mb-4">Server & network management systems.</p>
+                        </div>
+                    </div>
+                    <div
+                        class="bento-card rounded-3xl bg-card border border-border overflow-hidden group flex flex-col h-full relative">
+                        <div
+                            class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-500 to-cyan-500 opacity-90">
+                        </div>
+                        <div
+                            class="h-40 bg-gradient-to-br from-green-500/10 to-blue-500/10 flex items-center justify-center border-b border-border/50">
+                            <i data-lucide="server"
+                                class="w-12 h-12 text-primary/40 group-hover:scale-110 transition-transform duration-500"></i>
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <h3 class="font-bold text-lg mb-2 group-hover:text-primary transition-colors">PowerShell
+                                Tools</h3>
+                            <p class="text-xs text-muted-foreground mb-4">Automation scripts & IT management tools.</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- Let's Connect Section -->
+            <div class="mt-6 sm:mt-8 lg:col-span-3">
+                <div
+                    class="connect-section rounded-3xl bg-zinc-950 border border-zinc-900 p-5 sm:p-6 md:p-8 flex flex-col gap-5 sm:gap-6 relative overflow-hidden group">
+                    <!-- Orange top border -->
+                    <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-orange-600 to-orange-400">
+                    </div>
+
+                    <!-- Top Row: Title & Subtitle -->
+                    <div class="flex items-center gap-3 sm:gap-4 md:gap-5">
+                        <div
+                            class="p-2.5 sm:p-3 md:p-3.5 rounded-xl sm:rounded-2xl bg-orange-900/20 text-orange-500 border border-orange-500/10">
+                            <i data-lucide="mail" class="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7"></i>
+                        </div>
+                        <div class="flex flex-col">
+                            <h2 class="font-bold text-lg sm:text-xl text-zinc-100 leading-tight whitespace-nowrap">Let's
+                                Connect</h2>
+                            <p
+                                class="text-[10px] sm:text-[11px] text-zinc-500 uppercase tracking-[0.15em] font-bold mt-0.5">
+                                Get in Touch</p>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Row: Buttons - always single row, scrolls horizontally -->
+                    <div
+                        class="flex flex-nowrap items-center gap-2.5 sm:gap-3 w-full overflow-x-auto pb-1 scrollbar-hide">
+                        <a href="https://github.com/reyansh8000" target="_blank"
+                            class="connect-btn flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-zinc-900 border border-zinc-800 hover:bg-zinc-800 hover:border-zinc-700 text-zinc-300 hover:text-white text-xs sm:text-sm font-medium transition-all duration-300 whitespace-nowrap">
+                            <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                        </a>
+                        <a href="https://www.linkedin.com/in/guru-prasad-yadav-510742184/" target="_blank"
+                            class="connect-btn flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-zinc-900 border border-zinc-800 hover:bg-zinc-800 hover:border-zinc-700 text-zinc-300 hover:text-white text-xs sm:text-sm font-medium transition-all duration-300 whitespace-nowrap">
+                            <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
+                        </a>
+                        <a href="https://t.me/iamguruprasadyadav" target="_blank"
+                            class="connect-btn flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-zinc-900 border border-zinc-800 hover:bg-zinc-800 hover:border-zinc-700 text-zinc-300 hover:text-white text-xs sm:text-sm font-medium transition-all duration-300 whitespace-nowrap">
+                            <i data-lucide="send" class="w-4 h-4"></i> Telegram
+                        </a>
+                        <a href="resume.html" target="_blank"
+                            class="connect-btn flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-zinc-900 border border-zinc-800 hover:bg-zinc-800 hover:border-zinc-700 text-zinc-300 hover:text-white text-xs sm:text-sm font-medium transition-all duration-300 whitespace-nowrap">
+                            <i data-lucide="file-text" class="w-4 h-4"></i> Resume
+                        </a>
+                        <a href="mailto:reyansh8000@gmail.com"
+                            class="connect-btn flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-zinc-900 border border-zinc-800 hover:bg-zinc-800 hover:border-zinc-700 text-zinc-300 hover:text-white text-xs sm:text-sm font-medium transition-all duration-300 whitespace-nowrap">
+                            <i data-lucide="mail" class="w-4 h-4"></i> Email
+                        </a>
+                        <a href="contact.html"
+                            class="connect-btn flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-zinc-900 border border-zinc-800 hover:bg-zinc-800 hover:border-zinc-700 text-zinc-300 hover:text-white text-xs sm:text-sm font-medium transition-all duration-300 whitespace-nowrap">
+                            <i data-lucide="link" class="w-4 h-4"></i> Other Links
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Footer -->
+        <div class="mt-12 sm:mt-16 md:mt-20 w-full px-4 sm:px-6 md:px-8 pb-6 sm:pb-8">
+            <div
+                class="w-full max-w-7xl mx-auto rounded-2xl bg-zinc-950/90 border border-white/5 p-4 sm:p-6 md:p-8 flex flex-col items-center gap-4 sm:gap-5 md:gap-6 backdrop-blur-xl md:flex-row md:justify-between">
+
+                <!-- Left: Copyright -->
+                <div class="text-[10px] sm:text-xs text-zinc-400 font-medium tracking-wide text-center md:text-left">
+                    &copy; 2026 <span class="text-zinc-600 mx-1 sm:mx-2">-</span> <span
+                        class="text-zinc-100 font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase">G U R U &nbsp; P
+                        R A S A D</span>
+                    <span class="text-zinc-600 mx-1 sm:mx-2">—</span> All rights reserved.
+                </div>
+
+                <!-- Center: Links -->
+                <nav
+                    class="flex flex-wrap justify-center gap-4 sm:gap-5 md:gap-6 text-[10px] sm:text-xs font-medium text-zinc-400">
+                    <a href="index.html#" class="hover:text-white transition-colors">About</a>
+                    <a href="career.html" class="hover:text-white transition-colors">Career</a>
+                    <a href="blog.html" class="hover:text-white transition-colors">Blog</a>
+                    <a href="projects.html" class="hover:text-white transition-colors">Projects</a>
+                    <a href="contact.html" class="hover:text-white transition-colors">Contact</a>
+                </nav>
+
+                <!-- Right: Back to top -->
+                <button id="footer-back-to-top"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-white/5 hover:bg-white/10 text-zinc-200 text-[10px] sm:text-xs font-semibold transition-all border border-white/5 hover:border-white/10">
+                    <i data-lucide="arrow-up" class="w-3 h-3 sm:w-3.5 sm:h-3.5"></i> Back to top
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Floating Back To Top Button [CORRECTED COLOR] -->
+    <!-- Changed to bg-white text-black to ensure visibility in dark mode -->
+    <button id="floating-back-to-top"
+        class="fixed bottom-6 right-6 p-4 rounded-full bg-white text-black border border-border shadow-2xl hover:scale-110 transition-all duration-300 z-50 hidden md:flex items-center justify-center group">
+        <i data-lucide="arrow-up" class="w-5 h-5 group-hover:-translate-y-1 transition-transform"></i>
     </button>
 
+    <!-- Copy Link Feedback Toast -->
+    <div id="copy-feedback" class="copy-feedback">
+        Link Copied!
+    </div>
+
     <script src="script.js"></script>
+    <script>
+        // Additional Script for new Footer functionality
+        document.getElementById('footer-back-to-top')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        document.getElementById('floating-back-to-top')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // Show/Hide floating button
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('floating-back-to-top');
+            if (window.scrollY > 500) {
+                btn?.classList.remove('opacity-0', 'translate-y-10');
+            } else {
+                // optional hide logic
+            }
+        });
+    </script>
 </body>
 
 </html>

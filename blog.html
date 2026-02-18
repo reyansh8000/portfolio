@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Guru Prasad Yadav</title>
+    <meta name="description" content="Blog by Guru Prasad Yadav — Coming Soon.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        border: "hsl(var(--border))",
+                        input: "hsl(var(--input))",
+                        ring: "hsl(var(--ring))",
+                        background: "hsl(var(--background))",
+                        foreground: "hsl(var(--foreground))",
+                        primary: { DEFAULT: "hsl(var(--primary))", foreground: "hsl(var(--primary-foreground))" },
+                        secondary: { DEFAULT: "hsl(var(--secondary))", foreground: "hsl(var(--secondary-foreground))" },
+                        muted: { DEFAULT: "hsl(var(--muted))", foreground: "hsl(var(--muted-foreground))" },
+                        card: { DEFAULT: "hsl(var(--card))", foreground: "hsl(var(--card-foreground))" },
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Space Grotesk', 'sans-serif'] },
+                },
+            },
+        }
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --background: 0 0% 100%;
+            --foreground: 0 0% 3.9%;
+            --card: 0 0% 100%;
+            --card-foreground: 0 0% 3.9%;
+            --primary: 0 0% 9%;
+            --primary-foreground: 0 0% 98%;
+            --secondary: 0 0% 96.1%;
+            --secondary-foreground: 0 0% 9%;
+            --muted: 0 0% 96.1%;
+            --muted-foreground: 0 0% 45.1%;
+            --border: 0 0% 89.8%;
+            --input: 0 0% 89.8%;
+            --ring: 0 0% 3.9%;
+        }
+
+        .dark {
+            --background: 240 10% 3.9%;
+            --foreground: 0 0% 98%;
+            --card: 240 10% 5%;
+            --card-foreground: 0 0% 98%;
+            --primary: 0 0% 98%;
+            --primary-foreground: 240 5.9% 10%;
+            --secondary: 240 3.7% 15.9%;
+            --secondary-foreground: 0 0% 98%;
+            --muted: 240 3.7% 15.9%;
+            --muted-foreground: 240 5% 64.9%;
+            --border: 240 3.7% 15.9%;
+            --input: 240 3.7% 15.9%;
+            --ring: 240 4.9% 83.9%;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            letter-spacing: -0.011em;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: hsl(var(--primary));
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        .bento-card {
+            transition: all 0.5s ease;
+        }
+
+        .bento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                opacity: 0.4;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .float-anim {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .pulse-glow {
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+    <script>
+            (function () { try { var d = document.documentElement, c = d.classList; c.remove('light', 'dark'); var e = localStorage.getItem('theme'); if ('system' === e || (!e && true)) { var m = window.matchMedia('(prefers-color-scheme: dark)'); if (m.matches) { d.style.colorScheme = 'dark'; c.add('dark') } else { d.style.colorScheme = 'light'; c.add('light') } } else if (e) { c.add(e || '') } if (e === 'light' || e === 'dark') d.style.colorScheme = e } catch (e) { } })();
+    </script>
+</head>
+
+<body
+    class="bg-background text-foreground antialiased min-h-screen flex flex-col selection:bg-primary/20 selection:text-primary overflow-x-hidden">
+
+    <div class="fixed top-0 left-0 right-0 h-1 bg-muted z-[60]">
+        <div id="scroll-progress"
+            class="h-full bg-primary origin-left scale-x-0 transition-transform duration-100 ease-out"></div>
+    </div>
+
+    <!-- Header -->
+    <header id="main-header"
+        class="fixed top-4 left-0 right-0 z-50 px-4 md:px-8 flex justify-center transition-all duration-700 ease-out opacity-0 -translate-y-full">
+        <div
+            class="w-full max-w-7xl rounded-2xl bg-card/85 backdrop-blur-md border border-border/50 px-6 py-3 shadow-lg transition-all duration-300">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="relative w-10 h-10 transition-transform duration-500 hover:rotate-[360deg]">
+                        <img src="images/logo.png" alt="Logo" class="w-full h-full object-contain">
+                    </div>
+                    <span
+                        class="font-bold text-lg tracking-tight transition-transform duration-300 group-hover:scale-110">GURU
+                        PRASAD</span>
+                </a>
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
+                    <a href="index.html#" class="nav-link hover:text-foreground transition-colors">About</a>
+                    <a href="career.html" class="nav-link hover:text-foreground transition-colors">Career</a>
+                    <a href="blog.html"
+                        class="nav-link hover:text-foreground transition-colors text-foreground">Blog</a>
+                    <a href="projects.html" class="nav-link hover:text-foreground transition-colors">Projects</a>
+                    <a href="contact.html" class="nav-link hover:text-foreground transition-colors">Contact</a>
+                </nav>
+                <div class="flex items-center gap-2">
+                    <!-- Share Dropdown Wrapper -->
+                    <div class="relative">
+                        <button id="share-btn"
+                            class="p-2 rounded-full hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
+                            aria-label="Share">
+                            <i data-lucide="share-2" class="w-5 h-5"></i>
+                        </button>
+
+                        <!-- Dropdown Menu -->
+                        <div id="share-dropdown" class="share-dropdown">
+                            <div class="share-header">
+                                <i data-lucide="share-2" class="w-4 h-4"></i>
+                                <span>Share via...</span>
+                            </div>
+                            <div class="share-divider"></div>
+                            <a href="#" id="share-twitter" class="share-item" target="_blank">
+                                <i data-lucide="twitter" class="w-4 h-4"></i>
+                                <span>Share on Twitter</span>
+                            </a>
+                            <a href="#" id="share-linkedin" class="share-item" target="_blank">
+                                <i data-lucide="linkedin" class="w-4 h-4"></i>
+                                <span>Share on LinkedIn</span>
+                            </a>
+                            <a href="#" id="share-email" class="share-item">
+                                <i data-lucide="mail" class="w-4 h-4"></i>
+                                <span>Share via Email</span>
+                            </a>
+                            <div class="share-divider"></div>
+                            <button id="copy-link-btn" class="share-item w-full text-left">
+                                <i data-lucide="link" class="w-4 h-4"></i>
+                                <span>Copy Link</span>
+                            </button>
+                        </div>
+                    </div>
+                    <button id="theme-toggle"
+                        class="p-2 rounded-full hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
+                        aria-label="Toggle Theme">
+                        <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
+                        <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                    </button>
+                    <button id="mobile-menu-btn"
+                        class="md:hidden p-2 rounded-full hover:bg-muted transition-colors text-muted-foreground hover:text-foreground">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 md:hidden flex flex-col items-center justify-center space-y-8">
+        <button id="close-menu-btn" class="absolute top-6 right-6 p-2 rounded-full hover:bg-muted"><i data-lucide="x"
+                class="w-6 h-6"></i></button>
+        <a href="index.html#about" class="text-2xl font-bold hover:text-primary transition-colors mobile-link">About</a>
+        <a href="career.html" class="text-2xl font-bold hover:text-primary transition-colors mobile-link">Career</a>
+        <a href="projects.html" class="text-2xl font-bold hover:text-primary transition-colors mobile-link">Projects</a>
+        <a href="contact.html" class="text-2xl font-bold hover:text-primary transition-colors mobile-link">Contact</a>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-1 w-full max-w-7xl mx-auto px-4 md:px-8 py-24 md:py-32 flex items-center justify-center">
+
+        <div class="text-center max-w-2xl mx-auto">
+            <!-- Floating Icon -->
+            <div class="float-anim mb-8 inline-block">
+                <div class="p-6 rounded-2xl bg-orange-500/10 border border-orange-500/20 text-orange-400 inline-flex">
+                    <i data-lucide="pen-tool" class="w-16 h-16"></i>
+                </div>
+            </div>
+
+            <h1 class="text-4xl md:text-6xl font-black text-foreground mb-4">Blog</h1>
+            <div class="flex items-center justify-center gap-3 mb-8">
+                <div class="h-0.5 w-12 bg-gradient-to-r from-transparent to-orange-500 rounded"></div>
+                <span class="text-lg md:text-xl font-semibold text-orange-400 pulse-glow">Coming Soon</span>
+                <div class="h-0.5 w-12 bg-gradient-to-l from-transparent to-orange-500 rounded"></div>
+            </div>
+            <p class="text-muted-foreground text-sm md:text-base leading-relaxed mb-10 max-w-lg mx-auto">
+                I'm working on something exciting! Technical blogs on DevOps, cloud platforms, system administration,
+                and IT best practices will be available here soon.
+            </p>
+
+            <a href="index.html"
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-card border border-border text-sm font-semibold hover:border-primary/30 hover:bg-secondary/50 transition-all">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                Back to Home
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <div class="mt-20 w-full px-4 md:px-8 pb-8">
+        <div
+            class="w-full max-w-7xl mx-auto rounded-2xl bg-zinc-950/90 border border-white/5 p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 backdrop-blur-xl">
+
+            <!-- Left: Copyright -->
+            <div class="text-xs text-zinc-400 font-medium tracking-wide">
+                &copy; 2026 <span class="text-zinc-600 mx-2">-</span> <span
+                    class="text-zinc-100 font-bold tracking-[0.2em] uppercase">G U R U &nbsp; P R A S A D</span>
+                <span class="text-zinc-600 mx-2">—</span> All rights reserved.
+            </div>
+
+            <!-- Center: Links -->
+            <nav class="flex flex-wrap justify-center gap-6 text-xs font-medium text-zinc-400">
+                <a href="index.html#" class="hover:text-white transition-colors">About</a>
+                <a href="career.html" class="hover:text-white transition-colors">Career</a>
+                <a href="blog.html" class="hover:text-white transition-colors">Blog</a>
+                <a href="projects.html" class="hover:text-white transition-colors">Projects</a>
+                <a href="contact.html" class="hover:text-white transition-colors">Contact</a>
+            </nav>
+
+            <!-- Right: Back to top -->
+            <button id="footer-back-to-top"
+                class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-zinc-200 text-xs font-semibold transition-all border border-white/5 hover:border-white/10">
+                <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i> Back to top
+            </button>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons({ attrs: { 'stroke-width': 1.5 } });
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+                const isDark = document.documentElement.classList.contains('dark');
+                localStorage.theme = isDark ? 'dark' : 'light';
+                document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+            });
+        }
+        const header = document.getElementById('main-header');
+        setTimeout(() => { if (header) header.classList.remove('opacity-0', '-translate-y-full'); }, 100);
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.remove('translate-x-full'));
+            closeMenuBtn?.addEventListener('click', () => mobileMenu.classList.add('translate-x-full'));
+            mobileMenu.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => mobileMenu.classList.add('translate-x-full')); });
+        }
+        document.getElementById('footer-back-to-top')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    </script>
+    <!-- Copy Link Feedback Toast -->
+    <div id="copy-feedback" class="copy-feedback">
+        Link Copied!
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
